@@ -79,8 +79,13 @@ from tasks.new_msa_sent_task import CreateNewMSAsSent
 from tasks.client_meetings_conducted_task import CreateClientMeetingsConducted
 from tasks.ring_central_dials_task import CreateRingCentralDials
 from tasks.new_job_records_task import CreateNewJobRecords
+from tasks.assigned_jobs_task import AssignedJobsRecord
 
-CreateNewJobRecords().run()
-CreateNewMSAsSent().run()
-CreateClientMeetingsConducted().run()
-CreateRingCentralDials().run()
+
+# Uncomment below to run directly from this script.
+
+# AssignedJobsRecord().run()
+# CreateNewJobRecords().run()
+# CreateNewMSAsSent().run()
+# CreateClientMeetingsConducted().run()
+# CreateRingCentralDials().run()

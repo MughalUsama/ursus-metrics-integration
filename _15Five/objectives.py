@@ -1,3 +1,5 @@
+import json
+
 import requests
 from settings import _15Five_api_key
 
@@ -41,7 +43,7 @@ def create_objective(objectives_data):
     return response.json()
 
 
-def get_user_id_from_email(email:str):
+def get_user_id_from_email(email: str):
     url = 'https://my.15five.com/api/public/user'
     headers = {
         'Authorization': f'bearer {_15Five_api_key}',
@@ -52,13 +54,16 @@ def get_user_id_from_email(email:str):
         raise ValueError(f"Failed to retrieve user data. Status code: {response.status_code}")
 
     users = response.json().get('results', [])
+
     for user in users:
         if user.get('email').lower() == email.lower():
             if user.get('is_active'):
                 return user.get('id')
+            print(f"User with email '{email}' not active")
             return None
 
-    raise ValueError(f"User with email '{email}' not found")
+    print(f"User with email '{email}' not found")
+    return None
 
 
 def get_group_id_from_email(api_key, email):

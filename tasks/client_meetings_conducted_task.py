@@ -46,9 +46,10 @@ class CreateClientMeetingsConducted(Task):
                     # viewable_by_users = [get_15Five_user_id_from_email(user) for user in
                     #                      team_map.get(team, [])]
                     # viewable_by_users = [user for user in viewable_by_users if user]
-                    viewable_by_users = [11790663, 10968120, 11036004, 10982134, 12058109, 12398093, 12516049, 12608216,
+                    # viewable_by_users = [11790663, 10968120, 11036004, 10982134, 12058109, 12398093, 12516049, 12608216,
+                    #                      10907478]
+                    viewable_by_users = [11790663, 11036004, 10982134, 12058109, 12608216,
                                          10907478]
-
                     # metrics to upload
                     key_results = [
                         {
@@ -71,14 +72,14 @@ class CreateClientMeetingsConducted(Task):
                         key_results=key_results
                     )
                     # Create objective in 15Five
-                    # result_objective = create_objective(objectives)
-                    # # print(result_objective)
-                    # # print(result_objective[0]["key_results"])
-                    # # Set value of key result
-                    # fills_key_result_id = result_objective[0]["key_results"][0]["id"]
-                    #
-                    # # Update key result value
-                    # set_metric_value(fills_key_result_id, meetings_conducted)
+                    result_objective = create_objective(objectives)
+                    # print(result_objective)
+                    # print(result_objective[0]["key_results"])
+                    # Set value of key result
+                    fills_key_result_id = result_objective[0]["key_results"][0]["id"]
+
+                    # Update key result value
+                    set_metric_value(fills_key_result_id, meetings_conducted)
                 except Exception as e:
                     logger.error(f"Error in CreateClientMeetingsConducted task for member {member}: {str(e)}")
                     continue
